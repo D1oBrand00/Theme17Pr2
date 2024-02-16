@@ -1,35 +1,59 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Theme17Pr2
+namespace Theme17Pr3
 {
     class Engineer : Employee
     {
+        /// <summary>
+        /// Поле кол-ва разработанных проектов
+        /// </summary>
         int n;
-
+        /// <summary>
+        /// Свойства поля
+        /// </summary>
         public int N { get => n; set => n = value; }
-        public Engineer(string surname,string name, int p, int k, int n) : base(surname,name,p,k)
+        /// <summary>
+        /// Конструктор производного класса с 5 параметрами
+        /// </summary>
+        /// <param name="name">Имя</param>
+        /// <param name="surname">Фамилия</param>
+        /// <param name="birthDate">Дата рождения</param>
+        /// <param name="p">Минимальная зарплата</param>
+        /// <param name="n">Кол-во разработанных проектов</param>
+        public Engineer (string name, string surname, DateTime birthDate, int p, int n) : base(name, surname, birthDate, p)
         {
             this.n = n;
         }
-        public new double Income()
+        /// <summary>
+        /// Метод изменения дохода на 4.8*n
+        /// </summary>
+        /// <param name="k"></param>
+        /// <param name="H"></param>
+        /// <returns></returns>
+        public override double Income(double k, double H)
         {
-            if (n > 10)
-            {
-                return base.Income() * (n / 10);
-
-            }
-            else { return base.Income(); } 
-            
+            return base.Income(k, H) + 4.8 * n;
         }
+        /// <summary>
+        /// Метод вывода ифнормации
+        /// </summary>
         public override void Output()
         {
             base.Output();
-            Console.WriteLine($"Кол-во разработанных проэктов - {n}\nКонечный доход - {Income()}");
+            Console.WriteLine($"Кол-во разработанных проектов - {n}\nДоход менеджера увеличить на 4.8*n - {Income}");
         }
 
+
+
+
+
+
     }
+
+        
+    
 }
